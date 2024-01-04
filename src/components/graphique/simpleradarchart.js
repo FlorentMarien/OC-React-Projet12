@@ -14,7 +14,6 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      <div className='container-radarchart'>
       <ResponsiveContainer width="100%" height="100%">
         <RadarChart cx="50%" cy="50%" outerRadius="80%" data={localData} stroke="white" fill="white">
           <PolarGrid stroke="white" fill="white" />
@@ -23,7 +22,6 @@ export default class Example extends PureComponent {
           <Radar name="Mike" dataKey="A" stroke="red" fill="red" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
-      </div>
     );
   }
 }

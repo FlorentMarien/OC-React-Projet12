@@ -2,7 +2,7 @@ import SimpleRadarChart from './graphique/simpleradarchart'
 import SimpleBarChart from './graphique/simplebarchart'
 import SimpleLineChart from './graphique/simplelinechart'
 import SimpleRadialBarChart from './graphique/simpleradialbarchart'
-import './../styles/graphique.css'
+import './styles/graphique.css'
 function Graphique() {
   const data = [
     {
@@ -73,13 +73,50 @@ function Graphique() {
       fullMark: 150,
     },
   ];
+  const data3 = [
+    {
+      name: 'L',
+      time: 35,
+    },
+    {
+      name: 'M',
+      time:40,
+    },
+    {
+      name: 'M',
+      time:45,
+    },
+    {
+      name: 'J',
+      time:20,
+    },
+    {
+      name: 'V',
+      time:25,
+    },
+    {
+      name: 'S',
+      time:40,
+    },
+    {
+      name: 'D',
+      time:30,
+    },
+  ];
   return (
     <section>
       <p>test3</p>
-      <div class="container-graph">
+      <div className="container-graph">
+        <div className='container-simplebarchart'>
         <SimpleBarChart Data={data}></SimpleBarChart>
-        <SimpleRadarChart Data={data2}></SimpleRadarChart>
-        <SimpleLineChart></SimpleLineChart>
+        </div>
+        <div className='container-radarchart'>
+          <SimpleRadarChart Data={data2}></SimpleRadarChart>
+        </div>
+        <div className='container-linechart'>
+          <SimpleLineChart Data={data3}></SimpleLineChart>
+        </div>
+        
         <SimpleRadialBarChart></SimpleRadialBarChart>
       </div>
     </section>

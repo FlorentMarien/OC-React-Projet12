@@ -1,0 +1,20 @@
+.container-simplebarchart{
+    width: 1000px;
+    height: 500px;
+}
+.container-radarchart, .container-linechart{
+    width: 500px;
+    height: 500px;
+}
+.container-radarchart{
+    background-color: black;
+}
+.container-linechart{
+    background-color: red;
+}
+.container-graph{
+    
+}
+.recharts-tooltip-item-list li{
+    color: black !important;
+}
