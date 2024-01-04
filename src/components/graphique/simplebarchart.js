@@ -8,7 +8,6 @@ function mimaxPoid(data){
         if(element.poid < min || min === undefined) min = element.poid;
         if(element.poid > max || min === undefined) max = element.poid;
     });
-    console.log(min + " " +max)
     return [min,max]
 }
 
@@ -28,7 +27,7 @@ export default class Example extends PureComponent {
         <BarChart
           width={500}
           height={300}
-          data={localData}
+          data={localData.sessions}
           margin={{
             top: 5,
             right: 30,
@@ -37,11 +36,11 @@ export default class Example extends PureComponent {
           }}
         >
           <CartesianGrid strokeDasharray="3 3" />
-          <XAxis dataKey="name" />
-          <YAxis dataKey="poids" domain={mimaxPoid(localData)}/>
+          <XAxis dataKey="day" />
+          <YAxis dataKey="kilogram" domain={mimaxPoid(localData.sessions)}/>
           <Tooltip />
           <Legend />
-          <Bar dataKey="poids" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
+          <Bar dataKey="kilogram" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
           <Bar dataKey="calories" fill="red" activeBar={<Rectangle fill="orange" stroke="gray" />} />
         </BarChart>
       </ResponsiveContainer>

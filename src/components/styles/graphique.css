@@ -2,9 +2,12 @@
     width: 1000px;
     height: 500px;
 }
-.container-radarchart, .container-linechart{
-    width: 500px;
-    height: 500px;
+.container-radarchart, .container-linechart, .container-radialbarchart{
+    width: 320px;
+    height: 320px;
+}
+.container-radialbarchart{
+    position: relative;
 }
 .container-radarchart{
     background-color: black;

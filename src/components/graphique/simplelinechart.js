@@ -18,7 +18,7 @@ export default class Example extends PureComponent {
         <LineChart
           width={500}
           height={300}
-          data={localData}
+          data={localData.sessions}
           margin={{
             top: 5,
             right: 30,
@@ -27,11 +27,11 @@ export default class Example extends PureComponent {
           }}
         >
           
-          <XAxis dataKey="name" stroke="white" fill="white"/>
+          <XAxis dataKey="day" stroke="white" fill="white"/>
           
           <Tooltip/>
           
-          <Line type="monotone" dataKey="time" stroke="white" activeDot={{ r: 8 }} />
+          <Line type="monotone" dataKey="sessionLength" stroke="white" activeDot={{ r: 8 }} />
           
         </LineChart>
       </ResponsiveContainer>

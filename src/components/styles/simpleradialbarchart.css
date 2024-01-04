@@ -1,0 +1,19 @@
+.radialbar-textcontainer-percent{
+  width: 60px;
+  height: 30px;
+  margin: 0;
+    text-align: center;
+}
+.radialbar-textcontainer-objectif{
+    width: 60px;
+    height: 60px;
+    margin: 0;
+      text-align: center;
+}
+.radialbar-textcontainer{
+    position: absolute;
+    top: 115px;
+    left: 135px;
+    width: 60px;
+    height: 90px;
+}

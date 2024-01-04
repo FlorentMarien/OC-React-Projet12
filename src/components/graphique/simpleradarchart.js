@@ -10,16 +10,19 @@ export default class Example extends PureComponent {
   constructor(Data){
     super(Data);
     localData = Data.Data;
+    localData.data.forEach(element => {
+      element.trait = localData.kind[element.kind];
+    });
   }
 
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={localData} stroke="white" fill="white">
+        <RadarChart cx="50%" cy="50%" outerRadius="80%" data={localData.data} stroke="white" fill="white">
           <PolarGrid stroke="white" fill="white" />
-          <PolarAngleAxis dataKey="subject" stroke="white" fill="white" />
+          <PolarAngleAxis dataKey="trait" stroke="white" fill="white" />
         
-          <Radar name="Mike" dataKey="A" stroke="red" fill="red" fillOpacity={0.6} />
+          <Radar name="Mike" dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />
         </RadarChart>
       </ResponsiveContainer>
     );
