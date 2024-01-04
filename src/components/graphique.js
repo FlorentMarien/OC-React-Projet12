@@ -41,12 +41,44 @@ function Graphique() {
       calories: 350,
     },
   ];
+  const data2 = [
+    {
+      subject: 'Instensité',
+      A: 40,
+      fullMark: 150,
+    },
+    {
+      subject: 'Vitesse',
+      A: 110,
+      fullMark: 150,
+    },
+    {
+      subject: 'Force',
+      A: 75,
+      fullMark: 150,
+    },
+    {
+      subject: 'Endurance',
+      A: 110,
+      fullMark: 150,
+    },
+    {
+      subject: 'Energie',
+      A: 90,
+      fullMark: 150,
+    },
+    {
+      subject: 'Cardio',
+      A: 70,
+      fullMark: 150,
+    },
+  ];
   return (
     <section>
       <p>test3</p>
       <div class="container-graph">
         <SimpleBarChart Data={data}></SimpleBarChart>
-        <SimpleRadarChart></SimpleRadarChart>
+        <SimpleRadarChart Data={data2}></SimpleRadarChart>
         <SimpleLineChart></SimpleLineChart>
         <SimpleRadialBarChart></SimpleRadialBarChart>
       </div>
