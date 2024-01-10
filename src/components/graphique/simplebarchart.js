@@ -1,14 +1,20 @@
 import React, { PureComponent, useRef } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import {RenderLegend} from './../assets/RenderLegend.js'
+import  './../styles/simplebarchart.css'
 
-function mimaxPoid(data){
+function minmaxPoid(data){
     let min = undefined;
     let max = undefined;
     data.forEach(element => {
-        if(element.poid < min || min === undefined) min = element.poid;
-        if(element.poid > max || min === undefined) max = element.poid;
+        if(element.kilogram < min || min === undefined) min = element.kilogram;
+        if(element.kilogram > max || max === undefined) max = element.kilogram;
     });
     return [min,max]
+}
+function rangeminmaxPoid(data){
+  let range = minmaxPoid(data);
+  return ((range[1]-range[0])+1)
 }
 
 let localData;
@@ -34,14 +40,16 @@ export default class Example extends PureComponent {
             left: 20,
             bottom: 5,
           }}
+          barGap={20}
         >
-          <CartesianGrid strokeDasharray="3 3" />
+          <CartesianGrid strokeDasharray="3 3" vertical={false}/>
           <XAxis dataKey="day" />
-          <YAxis dataKey="kilogram" domain={mimaxPoid(localData.sessions)}/>
+          <YAxis tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
+          <YAxis dataKey="calories" yAxisId="left" orientation='left' hide/>
           <Tooltip />
-          <Legend />
-          <Bar dataKey="kilogram" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
-          <Bar dataKey="calories" fill="red" activeBar={<Rectangle fill="orange" stroke="gray" />} />
+          <Legend content={<RenderLegend />} verticalAlign="top" iconType='circle' align='right'/>
+          <Bar dataKey="kilogram" barSize={20} radius={[10, 10, 0, 0]} yAxisId="right" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
+          <Bar dataKey="calories" barSize={20} radius={[10, 10, 0, 0]} yAxisId="left" fill="red"  activeBar={<Rectangle fill="orange" stroke="gray" />} />
         </BarChart>
       </ResponsiveContainer>
     );
