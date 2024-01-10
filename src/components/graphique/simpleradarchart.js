@@ -3,16 +3,30 @@ import { Radar, RadarChart, PolarGrid, PolarAngleAxis, PolarRadiusAxis, Responsi
 import './../styles/simpleradarchart.css'
 
 let localData;
-
+function filterOutput(data){
+  let order = [6,5,4,3,2,1];
+  let output = [];
+  order.forEach(element =>{
+    data.every(dataelement =>{
+      if(dataelement.kind === element){
+        output.push(dataelement)
+        return false;
+      }else{return true}
+    })
+  })
+  return output;
+}
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/simple-radar-chart-rjoc6';
   
   constructor(Data){
     super(Data);
     localData = Data.Data;
+    if(localData.kind["1"] === "cardio") localData.kind={1:"Cardio",2:"Energie",3:"Endurance",4:"Force",5:"Vitesse",6:"Intensité"};
     localData.data.forEach(element => {
       element.trait = localData.kind[element.kind];
     });
+    localData.data = filterOutput(localData.data);
   }
 
   render() {
