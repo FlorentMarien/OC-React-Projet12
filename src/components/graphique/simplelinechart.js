@@ -1,20 +1,37 @@
-import React, { PureComponent } from 'react';
+import React, { useState,PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-
+import './../styles/simplelinechart.css'
 let localData;
 
+function onMouseOut(){
+  document.getElementsByClassName("container-linechart")[0].style.background = "red"
+}
+function onMouseMove(data){
+  //console.log(data)
+  //activetooltipindex
+  console.log(((100/7)*data.activeTooltipIndex))
+  document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+(((100/7)*(data.activeTooltipIndex)-5))+"%,rgba(91,8,8,1) "+((100/7)*(data.activeTooltipIndex))+"%, rgba(91,8,8,1) 100%)";
+}
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
   
   constructor(Data){
     super(Data);
     localData = Data.Data;
+    console.log(localData)
+    let arrayday = ["L","M","M","J","V","S","D"]
+    let i=0;
+    localData.sessions.forEach(element => {
+      element.dayl = arrayday[i];
+      i++;
+    });
   }
 
   render() {
     return (
       
       <ResponsiveContainer width="100%" height="100%">
+        <h3>Durée moyenne des sessions</h3>
         <LineChart
           width={500}
           height={300}
@@ -25,13 +42,20 @@ export default class Example extends PureComponent {
             left: 20,
             bottom: 5,
           }}
+          onMouseMove={onMouseMove}
+          onMouseOut={onMouseOut}
         >
           
-          <XAxis dataKey="day" stroke="white" fill="white"/>
+          <XAxis dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
           
           <Tooltip/>
-          
-          <Line type="monotone" dataKey="sessionLength" stroke="white" activeDot={{ r: 8 }} />
+          <defs>
+            <linearGradient id="grad1">
+                <stop offset="0%" stop-color="white" stop-opacity="0.5" />
+                <stop offset="100%" stop-color="white" stop-opacity="1" />
+            </linearGradient>
+        </defs>
+          <Line strokeWidth={3} type="bump" dataKey="sessionLength" stroke="url(#grad1)" activeDot={{ r: 5 }} />
           
         </LineChart>
       </ResponsiveContainer>
