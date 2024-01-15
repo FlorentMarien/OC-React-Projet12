@@ -3,18 +3,16 @@ import SimpleBarChart from './graphique/simplebarchart'
 import SimpleLineChart from './graphique/simplelinechart'
 import SimpleRadialBarChart from './graphique/simpleradialbarchart'
 import './styles/graphique.css'
-import mockedData from './mocked/data.js';
-let activmockedData = true;
-let userActivity,userAverageSessions,userMainData,userPerformance;
+import Services from './mocked/services.js'
+    let data = new Services();
+    let userActivity = data.getUserActivity();
+    let userPerformance = data.getUserPerformances();
+    let userAverageSessions = data.getUserAverageSessions();
+    let userMainData = data.getUserMainData();
+
 function Graphique() {
-  if(activmockedData === true){
-    userActivity = mockedData.USER_ACTIVITY[0];
-    userPerformance = mockedData.USER_PERFORMANCE[0];
-    userAverageSessions = mockedData.USER_AVERAGE_SESSIONS[0];
-    userMainData = mockedData.USER_MAIN_DATA[0];
-  }else{
-    //
-  }
+  
+  
   return (
     <section>
       <p>test3</p>
