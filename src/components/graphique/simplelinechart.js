@@ -10,7 +10,8 @@ function onMouseMove(data){
   //console.log(data)
   //activetooltipindex
   console.log(((100/7)*data.activeTooltipIndex))
-  document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+(((100/7)*(data.activeTooltipIndex)-5))+"%,rgba(91,8,8,1) "+((100/7)*(data.activeTooltipIndex))+"%, rgba(91,8,8,1) 100%)";
+  //282.5 + 37.5 320 18.75px
+  document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%,rgba(91,8,8,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%, rgba(91,8,8,1) 100%)";
 }
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';

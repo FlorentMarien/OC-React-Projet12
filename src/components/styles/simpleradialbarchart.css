@@ -11,9 +11,35 @@
       text-align: center;
 }
 .radialbar-textcontainer{
-    position: absolute;
-    top: 115px;
-    left: 135px;
-    width: 60px;
-    height: 90px;
+  position: absolute;
+  width: 233px;
+  height: 233px;
+  left: 43.5px;
+  top: 43.5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+  border-radius: 120px;
+}
+.radialbar-textcontainer div{
+  width: 60px;
+  height: 90px;
+
+}
+.container-radialbarchart{
+  background-color: #FBFBFB;
+}
+.recharts-radial-bar-background-sector{
+  fill: white;
+}
+.recharts-polar-angle-axis::before {
+  content: "";
+  background-color: red;
+}
+.radialbar-container > p{
+  margin: 0;
+  position: absolute;
+  left: 10px;
+  top: 10px;
 }

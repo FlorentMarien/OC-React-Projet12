@@ -19,17 +19,22 @@ export default class Example extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
+        <div className='radialbar-container'>
+        <p>Score</p>
         <div className='radialbar-textcontainer'>
+          
+          <div>
           <p className='radialbar-textcontainer-percent'>{localData.graph[0].percent}%</p>
           <p className='radialbar-textcontainer-objectif'>de votre objectif</p>
+          </div>
         </div>
-        
+        </div>
         <RadialBarChart clockWise startAngle={225} endAngle={-225} cx="50%" cy="50%" innerRadius="90%" outerRadius="80%" barSize={15} data={localData.graph} domain={[0,30]}>
         <PolarAngleAxis type="number" domain={[0, 30]} dataKey="percent" angleAxisId={0} tick={false} />
           <RadialBar
-            background
             dataKey="percent"
             angleAxisId={0}
+            cornerRadius={10}
           />
         <Label />
         </RadialBarChart>
