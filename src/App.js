@@ -8,7 +8,7 @@ function App() {
   return (
     <>
       <Header></Header>
-      <div>
+      <div id='page-container'>
         <NavigationApp></NavigationApp>
         <Graphique></Graphique>
       </div>
