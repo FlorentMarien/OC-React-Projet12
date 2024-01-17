@@ -1,0 +1,33 @@
+.container-nutrition{
+    width: 258px;
+    height: 124px;
+    display: flex;
+    border-radius: 5px;
+    background: #FBFBFB; 
+    align-items: center;
+}
+.container-nutrition img{
+    width: 60px;
+    height: 60px;
+    margin-left: 11%;
+    margin-right: 11%;
+}
+.container-nutrition h3{
+    color: #282D30;
+font-family: Roboto;
+font-size: 20px;
+font-style: normal;
+font-weight: 700;
+line-height: 24px; /* 120% */
+margin: 0;
+margin-bottom: 10px;
+}
+.container-nutrition p{
+    color: #74798C;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; 
+margin: 0;
+}

@@ -2,8 +2,10 @@ import SimpleRadarChart from './graphique/simpleradarchart'
 import SimpleBarChart from './graphique/simplebarchart'
 import SimpleLineChart from './graphique/simplelinechart'
 import SimpleRadialBarChart from './graphique/simpleradialbarchart'
+import Nutrition from './nutrition.js'
 import './styles/graphique.css'
 import Services from './mocked/services.js'
+    let dataNutrition = {id:0};
     let data = new Services();
     let userActivity = data.getUserActivity();
     let userPerformance = data.getUserPerformances();
@@ -14,6 +16,7 @@ function Graphique() {
   
   
   return (
+    <>
     <section>
       <p>test3</p>
       <div className="container-graph">
@@ -31,6 +34,13 @@ function Graphique() {
         </div>
       </div>
     </section>
+    <section>
+      <Nutrition data={{id:1}}></Nutrition>
+      <Nutrition data={{id:2}}></Nutrition>
+      <Nutrition data={{id:3}}></Nutrition>
+      <Nutrition data={{id:4}}></Nutrition>
+    </section>
+    </>
   );
 }
 
