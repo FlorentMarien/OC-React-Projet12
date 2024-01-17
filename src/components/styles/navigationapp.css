@@ -9,6 +9,7 @@
   gap: 20px;
   align-items: center;
   position: relative;
+  flex-shrink: 0;
 }
 .aside-nav img{
     width: 64px;
