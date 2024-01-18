@@ -72,4 +72,5 @@ margin-bottom: 41px;
 }
 #main-container > div > div{
     display: flex;
+    gap: 30px;
 }

@@ -7,10 +7,12 @@ import iconFitness from './assets/icons/icon-fitness.svg'
 function NavigationApp() {
   return (
         <nav className="aside-nav">
+          <div>
           <img src={iconYoga} />
           <img src={iconSwimm} />
           <img src={iconBike} />
           <img src={iconFitness} />
+          </div>
           <p>Copiryght, SportSee 2020</p>
         </nav>
   );

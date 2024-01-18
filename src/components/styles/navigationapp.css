@@ -1,15 +1,12 @@
 .aside-nav{
     width: 117px;
-  height: calc(100vh - 91px);
+  min-height: calc(100vh - 91px);
   background-color: black;
   color: white;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  gap: 20px;
-  align-items: center;
   position: relative;
   flex-shrink: 0;
+  display: flex;
+  justify-content: center;
 }
 .aside-nav img{
     width: 64px;
@@ -27,4 +24,12 @@ font-weight: 500;
 line-height: 24px; /* 200% */ 
 white-space: nowrap;
 margin: 0;
+}
+.aside-nav div{
+    position: fixed;
+  top: calc(50vh - 150.5px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
 }

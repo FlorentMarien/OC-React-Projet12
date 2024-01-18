@@ -1,6 +1,7 @@
 import React, { PureComponent, useRef } from 'react';
 import { BarChart, Bar, Rectangle, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
-import {RenderLegend} from './../assets/RenderLegend.js'
+import {RenderLegend, RenderTooltipBar} from './../assets/RenderLegend.js'
+
 import  './../styles/simplebarchart.css'
 
 function minmaxPoid(data){
@@ -25,6 +26,8 @@ export default class Example extends PureComponent {
   constructor(Data){
     super(Data);
     localData = Data.Data;
+    let i = 1;
+    localData.sessions.forEach((element)=>{element.dayl = i;i++;});
   }
   
   render() {
@@ -43,10 +46,10 @@ export default class Example extends PureComponent {
           barGap={20}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false}/>
-          <XAxis dataKey="day" />
+          <XAxis dataKey="dayl" />
           <YAxis tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
           <YAxis dataKey="calories" yAxisId="left" orientation='left' hide/>
-          <Tooltip />
+          <Tooltip content={<RenderTooltipBar />}/>
           <Legend content={<RenderLegend />} verticalAlign="top" iconType='circle' align='right'/>
           <Bar dataKey="kilogram" barSize={20} radius={[10, 10, 0, 0]} yAxisId="right" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
           <Bar dataKey="calories" barSize={20} radius={[10, 10, 0, 0]} yAxisId="left" fill="red"  activeBar={<Rectangle fill="orange" stroke="gray" />} />

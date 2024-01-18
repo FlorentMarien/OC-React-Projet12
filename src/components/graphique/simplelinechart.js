@@ -13,19 +13,26 @@ function onMouseMove(data){
   //282.5 + 37.5 320 18.75px
   document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%,rgba(91,8,8,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%, rgba(91,8,8,1) 100%)";
 }
+let arrayminmax=[null,null];
 export default class Example extends PureComponent {
   static demoUrl = 'https://codesandbox.io/s/simple-line-chart-kec3v';
   
   constructor(Data){
     super(Data);
     localData = Data.Data;
-    console.log(localData)
     let arrayday = ["L","M","M","J","V","S","D"]
     let i=0;
     localData.sessions.forEach(element => {
+      console.log(element.sessionLength)
+      if(arrayminmax[0] === null || element.sessionLength < arrayminmax[0]) arrayminmax[0] = element.sessionLength;
+      if(arrayminmax[1] === null || element.sessionLength > arrayminmax[1]) arrayminmax[1] = element.sessionLength;
       element.dayl = arrayday[i];
       i++;
     });
+    let gap = 30;
+    arrayminmax[0] -= gap;
+    arrayminmax[1] += gap;
+    if(arrayminmax[0]<0) arrayminmax[0]= -10;
   }
 
   render() {
@@ -48,7 +55,7 @@ export default class Example extends PureComponent {
         >
           
           <XAxis dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
-          
+          <YAxis type="number" domain={arrayminmax} hide/>
           <Tooltip/>
           <defs>
             <linearGradient id="grad1">
