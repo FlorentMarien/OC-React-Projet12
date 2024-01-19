@@ -16,7 +16,7 @@ function Graphique() {
   
   return (
     <div id="main-container">
-      <p className='text-welcome'>Bonjour <span>{'Thomas'}</span></p>
+      <p className='text-welcome'>Bonjour <span>{userMainData.userInfos.firstName}</span></p>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
       <div>
         <div>
@@ -38,10 +38,10 @@ function Graphique() {
           </div>
         </section>
         <section className='block-nutrition'>
-          <Nutrition data={{id:1}}></Nutrition>
-          <Nutrition data={{id:2}}></Nutrition>
-          <Nutrition data={{id:3}}></Nutrition>
-          <Nutrition data={{id:4}}></Nutrition>
+          <Nutrition data={{id:1,value:userMainData.keyData.calorieCount}}></Nutrition>
+          <Nutrition data={{id:2,value:userMainData.keyData.proteinCount}}></Nutrition>
+          <Nutrition data={{id:3,value:userMainData.keyData.carbohydrateCount}}></Nutrition>
+          <Nutrition data={{id:4,value:userMainData.keyData.lipidCount}}></Nutrition>
         </section>
         </div>
       </div>

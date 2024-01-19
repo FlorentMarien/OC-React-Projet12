@@ -13,7 +13,7 @@ function Nutrition({data}) {
     <>
         <img src={CaloriesIcon}/>
         <div>
-            <h3>1,873Kcal</h3>
+            <h3>{data.value}Kcal</h3>
             <p>Calories</p>
         </div>
      </>
@@ -21,7 +21,7 @@ function Nutrition({data}) {
     <>
         <img src={ProteinIcon}/>
         <div>
-            <h3>155g</h3>
+            <h3>{data.value}g</h3>
             <p>Proteine</p>
         </div>
     </>
@@ -29,7 +29,7 @@ function Nutrition({data}) {
     <>
         <img src={AppleIcon}/>
         <div>
-            <h3>190g</h3>
+            <h3>{data.value}g</h3>
             <p>Glucides</p>
         </div>
     </>
@@ -37,7 +37,7 @@ function Nutrition({data}) {
     <>
         <img src={BurgerIcon}/>
         <div>
-            <h3>50g</h3>
+            <h3>{data.value}g</h3>
             <p>Lipides</p>
         </div>
     </>
