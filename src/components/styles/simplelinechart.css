@@ -5,6 +5,12 @@
     stroke: linear-gradient(rgba(255,255,255,0.3), rgba(255,255,255,1));
 }
 .container-linechart h3{
-    color: rgba(255,255,255,0.6);
     position: absolute;
+    color: #FFF;
+font-family: Roboto;
+font-size: 15px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 160% */ 
+opacity: 0.504;
 }

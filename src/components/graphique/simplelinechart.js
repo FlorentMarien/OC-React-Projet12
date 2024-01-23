@@ -9,9 +9,9 @@ function onMouseOut(){
 function onMouseMove(data){
   //console.log(data)
   //activetooltipindex
-  console.log(((100/7)*data.activeTooltipIndex))
+  console.log(data)
   //282.5 + 37.5 320 18.75px
-  document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%,rgba(91,8,8,1) "+(((100/7)*(data.activeTooltipIndex))+(((18/320)*100)))+"%, rgba(91,8,8,1) 100%)";
+  document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+data.chartX/263*100+"%,rgba(91,8,8,1) "+data.chartX/263*100+"%, rgba(91,8,8,1) 100%)";
 }
 let arrayminmax=[null,null];
 export default class Example extends PureComponent {
@@ -44,12 +44,7 @@ export default class Example extends PureComponent {
           width={500}
           height={300}
           data={localData.sessions}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
+          
           onMouseMove={onMouseMove}
           onMouseOut={onMouseOut}
         >

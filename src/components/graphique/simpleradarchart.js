@@ -32,8 +32,8 @@ export default class Example extends PureComponent {
   render() {
     return (
       <ResponsiveContainer width="100%" height="100%">
-        <RadarChart cx="50%" cy="50%" outerRadius="73%" data={localData.data} stroke="white" fill="white">
-          <PolarGrid stroke="white" fill="white" />
+        <RadarChart cx="50%" cy="50%" outerRadius="64%" data={localData.data} stroke="white" fill="white">
+          <PolarGrid radialLines={false}/>
           <PolarAngleAxis dataKey="trait" stroke="white" fill="white" />
         
           <Radar name="Mike" dataKey="value" stroke="red" fill="red" fillOpacity={0.6} />

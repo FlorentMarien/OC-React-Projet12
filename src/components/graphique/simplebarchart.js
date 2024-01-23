@@ -32,17 +32,9 @@ export default class Example extends PureComponent {
   
   render() {
     return (
-      <ResponsiveContainer width="100%" height="100%">
+      <ResponsiveContainer >
         <BarChart
-          width={500}
-          height={300}
           data={localData.sessions}
-          margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }}
           barGap={20}
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false}/>
@@ -51,8 +43,8 @@ export default class Example extends PureComponent {
           <YAxis dataKey="calories" yAxisId="left" orientation='left' hide/>
           <Tooltip content={<RenderTooltipBar />}/>
           <Legend content={<RenderLegend />} verticalAlign="top" iconType='circle' align='right'/>
-          <Bar dataKey="kilogram" barSize={20} radius={[10, 10, 0, 0]} yAxisId="right" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
-          <Bar dataKey="calories" barSize={20} radius={[10, 10, 0, 0]} yAxisId="left" fill="red"  activeBar={<Rectangle fill="orange" stroke="gray" />} />
+          <Bar dataKey="kilogram" barSize={12} radius={[10, 10, 0, 0]} yAxisId="right" fill="black" activeBar={<Rectangle fill="gray" stroke="orange" />} />
+          <Bar dataKey="calories" barSize={12} radius={[10, 10, 0, 0]} yAxisId="left" fill="red"  activeBar={<Rectangle fill="orange" stroke="gray" />} />
         </BarChart>
       </ResponsiveContainer>
     );
