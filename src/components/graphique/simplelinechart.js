@@ -1,5 +1,6 @@
 import React, { useState,PureComponent } from 'react';
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
+import { RenderToolTipLineBar } from './../assets/RenderLegend.js';
 import './../styles/simplelinechart.css'
 let localData;
 
@@ -7,10 +8,6 @@ function onMouseOut(){
   document.getElementsByClassName("container-linechart")[0].style.background = "red"
 }
 function onMouseMove(data){
-  //console.log(data)
-  //activetooltipindex
-  console.log(data)
-  //282.5 + 37.5 320 18.75px
   document.getElementsByClassName("container-linechart")[0].style.background = "linear-gradient(to right, rgba(255,0,0,1) 0%, rgba(255,0,0,1) "+data.chartX/263*100+"%,rgba(91,8,8,1) "+data.chartX/263*100+"%, rgba(91,8,8,1) 100%)";
 }
 let arrayminmax=[null,null];
@@ -23,7 +20,6 @@ export default class Example extends PureComponent {
     let arrayday = ["L","M","M","J","V","S","D"]
     let i=0;
     localData.sessions.forEach(element => {
-      console.log(element.sessionLength)
       if(arrayminmax[0] === null || element.sessionLength < arrayminmax[0]) arrayminmax[0] = element.sessionLength;
       if(arrayminmax[1] === null || element.sessionLength > arrayminmax[1]) arrayminmax[1] = element.sessionLength;
       element.dayl = arrayday[i];
@@ -51,7 +47,7 @@ export default class Example extends PureComponent {
           
           <XAxis dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
           <YAxis type="number" domain={arrayminmax} hide/>
-          <Tooltip/>
+          <Tooltip content={ <RenderToolTipLineBar/> }/>
           <defs>
             <linearGradient id="grad1">
                 <stop offset="0%" stop-color="white" stop-opacity="0.5" />

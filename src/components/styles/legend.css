@@ -32,3 +32,44 @@
     background-color: gray;
     display: block;
 }
+.mx-2{
+    color: #74798C;
+font-family: Roboto;
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 24px; /* 171.429% */ 
+}
+.container-graph-legend{
+    gap: 32px;
+}
+.graph-legend{
+    gap:10px;
+}
+.simplebarchart-header-title{
+    color: #20253A;
+    font-family: Roboto;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 160% */
+}
+.tooltip-linebar2{
+    background-color: white;
+    height: 25px;
+    padding-left: 7px;
+    padding-right: 7px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.tooltip-linebar2 p{
+    color: #000;
+    text-align: center;
+    font-family: Roboto;
+    font-size: 8px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 300% */
+    
+}

@@ -6,15 +6,19 @@ export const RenderLegend = (props) => {
     return (
       <div className="simplebarchart-header">
         <div>
-            <h3>Activité quotidienne</h3>
+            <h3 className='simplebarchart-header-title'>Activité quotidienne</h3>
         </div>
-        <div>
+        <div className='container-graph-legend'>
         {payload.map((entry, index) => (
           <>
-            <div>
+            <div className='graph-legend'>
             <img src={index === 0 ? circle : circlered}/>
             <span className="mx-2" key={`item-${index}`}>
-              {entry.value}
+              {
+                entry.value === "kilogram" ? "Poids (kg)"
+                : entry.value === "calories" ? "Calories brûlées (kCal)" 
+                : entry.value
+              }
             </span>
             </div>
           </>
@@ -38,6 +42,17 @@ export const RenderLegend = (props) => {
           <p>{payload[0].payload.calories}Kcal</p>
           </li>
         </ul>
+      </div>
+      : null
+    );
+  };
+
+  export const RenderToolTipLineBar = (props) => {
+    const { payload } = props;
+    return (
+      payload[0] !== undefined ?
+      <div className='tooltip-linebar2'>
+            <p>{payload[0].payload.sessionLength}min</p>
       </div>
       : null
     );

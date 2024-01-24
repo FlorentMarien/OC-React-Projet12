@@ -6,7 +6,7 @@ import ProteinIcon from './assets/icons/protein-icon.svg'
 
 function Nutrition({data}) {
   return (
-    <div className='container-nutrition'>
+    <div className={'container-nutrition'+ (data.id === null ? " hidden" : "")}>
     
     {
     data.id === 1 ?

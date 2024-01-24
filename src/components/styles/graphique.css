@@ -74,3 +74,37 @@ margin-bottom: 41px;
     display: flex;
     gap: 30px;
 }
+@media only screen and (max-width: 1249px){
+    #main-container > div > div{
+        display: block;
+    }
+    .block-nutrition{
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    .container-graph, .block-nutrition{
+        gap: 20px;
+    }
+    .block-graphique{
+        margin-bottom: 20px;
+    }
+    #main-container > div {
+    }
+    .container-graph{
+        display: flex;
+        justify-content: space-between;
+    }
+    .block-nutrition{
+        justify-content: space-between;
+    }
+}
+@media only screen and (max-width: 652px){
+    .container-graph{
+        justify-content: center;
+    }
+    .block-nutrition{
+        justify-content: center;
+    }
+}

@@ -42,6 +42,8 @@ function Graphique() {
           <Nutrition data={{id:2,value:userMainData.keyData.proteinCount}}></Nutrition>
           <Nutrition data={{id:3,value:userMainData.keyData.carbohydrateCount}}></Nutrition>
           <Nutrition data={{id:4,value:userMainData.keyData.lipidCount}}></Nutrition>
+          <Nutrition data={{id:null}}></Nutrition>
+          <Nutrition data={{id:null}}></Nutrition>
         </section>
         </div>
       </div>
