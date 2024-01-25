@@ -21,16 +21,15 @@ function Graphique() {
       <div>
         <div>
           <section className='block-graphique'>
-          
           <div className="container-graph">
             <div className='container-simplebarchart'>
-            <SimpleBarChart Data={userActivity}></SimpleBarChart>
-            </div>
-            <div className='container-radarchart'>
-              <SimpleRadarChart Data={userPerformance}></SimpleRadarChart>
+              <SimpleBarChart Data={userActivity}></SimpleBarChart>
             </div>
             <div className='container-linechart'>
               <SimpleLineChart Data={userAverageSessions}></SimpleLineChart>
+            </div>
+            <div className='container-radarchart'>
+              <SimpleRadarChart Data={userPerformance}></SimpleRadarChart>
             </div>
             <div className='container-radialbarchart'>
             <SimpleRadialBarChart  Data={userMainData}></SimpleRadialBarChart>
