@@ -11,11 +11,11 @@ function minmaxPoid(data){
         if(element.kilogram < min || min === undefined) min = element.kilogram;
         if(element.kilogram > max || max === undefined) max = element.kilogram;
     });
-    return [min,max]
+    return [min-1,max+1]
 }
 function rangeminmaxPoid(data){
   let range = minmaxPoid(data);
-  return ((range[1]-range[0])+1)
+  return (((range[1])-(range[0]))+1)
 }
 
 let localData;
@@ -39,7 +39,7 @@ export default class Example extends PureComponent {
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false}/>
           <XAxis dataKey="dayl" />
-          <YAxis tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
+          <YAxis width={30} tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
           <YAxis dataKey="calories" yAxisId="left" orientation='left' hide/>
           <Tooltip content={<RenderTooltipBar />}/>
           <Legend content={<RenderLegend />} verticalAlign="top" iconType='circle' align='right'/>

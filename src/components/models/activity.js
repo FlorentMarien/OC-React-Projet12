@@ -6,6 +6,6 @@ export class UserActivity {
         arraysessions.push(new UserActivitySession(element))
       });
       this.sessions = arraysessions;
-      this.id = data.id;
+      this.id = data.userId;
     }
   }

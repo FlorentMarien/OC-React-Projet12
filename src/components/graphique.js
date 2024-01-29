@@ -5,7 +5,7 @@ import SimpleRadialBarChart from './graphique/simpleradialbarchart'
 import Nutrition from './nutrition.js'
 import './styles/graphique.css'
 import Services from './mocked/services.js'
-    let data = new Services();
+    let data = new Services(18);
     let userActivity = data.getUserActivity();
     let userPerformance = data.getUserPerformances();
     let userAverageSessions = data.getUserAverageSessions();

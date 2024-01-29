@@ -4,8 +4,8 @@ export class UserMainData {
       this.id = data.id;
       this.userInfos = new UserInfo(data.userInfos);
       this.keyData = new UserKeyData(data.keyData);
-      this.todayScore = data.todayScore;
-      this.score = data.score;
+      data.todayScore === undefined ? this.todayScore = data.score : this.todayScore = data.todayScore;
+      //this.score = data.score;
     }
   }
 export class UserInfo{

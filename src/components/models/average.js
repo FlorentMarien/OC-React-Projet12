@@ -6,6 +6,6 @@ export class UserAverageSession {
         arraysessions.push(new UserAverageSessionSession(element))
       });
       this.sessions = arraysessions;
-      this.id = data.id;
+      this.id = data.userId;
     }
   }
