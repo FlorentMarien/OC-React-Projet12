@@ -5,7 +5,7 @@ import {UserAverageSession} from '../models/average.js';
 import {UserPerformance} from '../models/performance.js';
 import {UserMainData} from '../models/maindata.js';
 import Api from './api.js'
-let mocked = true;
+let mocked = false;
 
 export default class Services{
 constructor(id){
@@ -13,7 +13,7 @@ constructor(id){
     this.id = id;
     this.clientApi = new Api(this.id);
 }
-getUserActivity(){
+async getUserActivity(){
     if(mocked === true){
         let data = null;
         mockedData.USER_ACTIVITY.every((element)=>{
@@ -25,9 +25,10 @@ getUserActivity(){
             }
         });
         return new UserActivity(data);
-    }else return this.clientApi.getUserApiActivity();
+    }else return new UserActivity(await this.clientApi.getUserApiActivity());
+    
 }
-getUserPerformances(){
+ async getUserPerformances(){
     if(mocked === true){
         let data = null;
         mockedData.USER_PERFORMANCE.every((element)=>{
@@ -39,9 +40,9 @@ getUserPerformances(){
             }
         });
         return new UserPerformance(data);
-    }else return this.clientApi.getUserApiPerformances(this.id);
+    }else return new UserPerformance(await this.clientApi.getUserApiPerformances());
 }
-getUserAverageSessions(){
+ async getUserAverageSessions(){
     if(mocked === true){
         let data = null;
         mockedData.USER_AVERAGE_SESSIONS.every((element)=>{
@@ -53,9 +54,9 @@ getUserAverageSessions(){
             }
         });
         return new UserAverageSession(data);
-    }else return this.clientApi.getUserApiAverageSessions(this.id);
+    }else return new UserAverageSession(await this.clientApi.getUserApiAverageSessions());
 }
-getUserMainData(){
+async getUserMainData(){
     if(mocked === true){
         let data = null;
         mockedData.USER_MAIN_DATA.every((element)=>{
@@ -67,6 +68,6 @@ getUserMainData(){
             }
         });
         return new UserMainData(data);
-    }else return this.clientApi.getUserApiMainData(this.id);
+    }else return new UserMainData(await this.clientApi.getUserApiMainData());
 }
 }
