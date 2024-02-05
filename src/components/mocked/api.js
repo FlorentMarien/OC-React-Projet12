@@ -14,31 +14,34 @@
 */
 
 export default class Api{
-constructor(id){
-    this.id = id;
+constructor(){
 }
 async requestApi(url){
-    let tampon;
+    let tampon = {};
     await fetch(url)
-    .then((resp) => resp.json())
-    .then((resp)=>{
-        tampon = resp.data;
+    .then((resp) => {
+        tampon.status=resp.status; 
+        tampon.statusText=resp.statusText;
+        return resp.json();
     })
-    .catch(function() {
-        
+    .then((resp)=>{
+        tampon = {...resp.data, ...tampon};
+    })
+    .catch((e) => {
+        tampon = e;
     });
     return tampon;
     }
-async getUserApiActivity(){
-    return await this.requestApi('http://localhost:3000/user/'+this.id+'/activity');;
+async getUserApiActivity(id){
+    return await this.requestApi('http://localhost:3000/user/'+id+'/activity');
 }
-async getUserApiPerformances(){
-    return  await this.requestApi('http://localhost:3000/user/'+this.id+'/performance');
+async getUserApiPerformances(id){
+    return  await this.requestApi('http://localhost:3000/user/'+id+'/performance');
 }
-async getUserApiAverageSessions(){
-    return  await this.requestApi('http://localhost:3000/user/'+this.id+'/average-sessions');
+async getUserApiAverageSessions(id){
+    return  await this.requestApi('http://localhost:3000/user/'+id+'/average-sessions');
 }
-async getUserApiMainData(){
-    return  await this.requestApi('http://localhost:3000/user/'+this.id);
+async getUserApiMainData(id){
+    return  await this.requestApi('http://localhost:3000/user/'+id);
 }
 }

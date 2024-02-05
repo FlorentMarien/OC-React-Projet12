@@ -8,16 +8,14 @@ import Api from './api.js'
 let mocked = false;
 
 export default class Services{
-constructor(id){
-    if(id === undefined) id=0;
-    this.id = id;
-    this.clientApi = new Api(this.id);
+constructor(){
+    this.clientApi = new Api();
 }
-async getUserActivity(){
+async getUserActivity(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_ACTIVITY.every((element)=>{
-            if(element.userId === this.id){ 
+            if(element.userId === id){ 
                 data = element;
                 return false;
             }else{
@@ -25,14 +23,14 @@ async getUserActivity(){
             }
         });
         return new UserActivity(data);
-    }else return new UserActivity(await this.clientApi.getUserApiActivity());
+    }else return new UserActivity(await this.clientApi.getUserApiActivity(id));
     
 }
- async getUserPerformances(){
+ async getUserPerformances(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_PERFORMANCE.every((element)=>{
-            if(element.userId === this.id){ 
+            if(element.userId === id){ 
                 data = element;
                 return false;
             }else{
@@ -40,13 +38,13 @@ async getUserActivity(){
             }
         });
         return new UserPerformance(data);
-    }else return new UserPerformance(await this.clientApi.getUserApiPerformances());
+    }else return new UserPerformance(await this.clientApi.getUserApiPerformances(id));
 }
- async getUserAverageSessions(){
+ async getUserAverageSessions(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_AVERAGE_SESSIONS.every((element)=>{
-            if(element.userId === this.id){ 
+            if(element.userId === id){ 
                 data = element;
                 return false;
             }else{
@@ -54,13 +52,13 @@ async getUserActivity(){
             }
         });
         return new UserAverageSession(data);
-    }else return new UserAverageSession(await this.clientApi.getUserApiAverageSessions());
+    }else return new UserAverageSession(await this.clientApi.getUserApiAverageSessions(id));
 }
-async getUserMainData(){
+async getUserMainData(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_MAIN_DATA.every((element)=>{
-            if(element.id === this.id){ 
+            if(element.id === id){ 
                 data = element;
                 return false;
             }else{
@@ -68,6 +66,6 @@ async getUserMainData(){
             }
         });
         return new UserMainData(data);
-    }else return new UserMainData(await this.clientApi.getUserApiMainData());
+    }else return new UserMainData(await this.clientApi.getUserApiMainData(id));
 }
 }

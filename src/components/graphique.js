@@ -5,17 +5,17 @@ import SimpleRadialBarChart from './graphique/simpleradialbarchart'
 import Nutrition from './nutrition.js'
 import './styles/graphique.css'
 import Services from './mocked/services.js'
-    
-    let data = new Services(18);
-    let userActivity = await data.getUserActivity();
-    let userPerformance = await data.getUserPerformances();
-    let userAverageSessions = await data.getUserAverageSessions();
-    let userMainData = await data.getUserMainData();
+    let id = 18;
+    let data = new Services();
+    let userActivity = await data.getUserActivity(id);
+    let userPerformance = await data.getUserPerformances(id);
+    let userAverageSessions = await data.getUserAverageSessions(id);
+    let userMainData = await data.getUserMainData(id);
     
 function Graphique() {
-  
-  
+
   return (
+    (userActivity.status === 200 && userPerformance.status === 200 && userAverageSessions.status === 200 && userMainData.status === 200) ?
     <div id="main-container">
       <p className='text-welcome'>Bonjour <span>{userMainData.userInfos.firstName}</span></p>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
@@ -47,8 +47,12 @@ function Graphique() {
         </section>
         </div>
       </div>
-    
     </div>
+    : 
+    <div id="main-container">
+      <p className='text-welcome'>Bonjour désolé il y a une erreur <span>{userActivity.status === null ? userActivity.status+" "+userActivity.statusText : "problème serveur"} </span></p>
+    </div>
+    
   );
 }
 

@@ -45,7 +45,12 @@ export default class Example extends PureComponent {
           onMouseOut={onMouseOut}
         >
           
-          <XAxis dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
+          <XAxis margin={{
+            top: 5,
+            right: 30,
+            left: 20,
+            bottom: 5,
+          }} dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
           <YAxis type="number" domain={arrayminmax} hide/>
           <Tooltip content={ <RenderToolTipLineBar/> }/>
           <defs>
