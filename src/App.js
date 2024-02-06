@@ -2,6 +2,7 @@ import './App.css';
 import Header from './components/header.js'
 import NavigationApp from './components/navigationapp.js'
 import Graphique from './components/graphique.js'
+import Router from './router.jsx'
 
 
 function App() {
@@ -10,7 +11,7 @@ function App() {
       <Header></Header>
       <div id='page-container'>
         <NavigationApp></NavigationApp>
-        <Graphique></Graphique>
+        <Graphique />
       </div>
     </>
   );

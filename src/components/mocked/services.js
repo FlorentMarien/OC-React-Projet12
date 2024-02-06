@@ -17,11 +17,13 @@ async getUserActivity(id){
         mockedData.USER_ACTIVITY.every((element)=>{
             if(element.userId === id){ 
                 data = element;
+                data.status = 200;
                 return false;
             }else{
                 return true;
             }
         });
+
         return new UserActivity(data);
     }else return new UserActivity(await this.clientApi.getUserApiActivity(id));
     
@@ -32,6 +34,7 @@ async getUserActivity(id){
         mockedData.USER_PERFORMANCE.every((element)=>{
             if(element.userId === id){ 
                 data = element;
+                data.status = 200;
                 return false;
             }else{
                 return true;
@@ -46,6 +49,7 @@ async getUserActivity(id){
         mockedData.USER_AVERAGE_SESSIONS.every((element)=>{
             if(element.userId === id){ 
                 data = element;
+                data.status = 200;
                 return false;
             }else{
                 return true;
@@ -60,6 +64,7 @@ async getUserMainData(id){
         mockedData.USER_MAIN_DATA.every((element)=>{
             if(element.id === id){ 
                 data = element;
+                data.status = 200;
                 return false;
             }else{
                 return true;

@@ -1,21 +1,73 @@
-import SimpleRadarChart from './graphique/simpleradarchart'
-import SimpleBarChart from './graphique/simplebarchart'
-import SimpleLineChart from './graphique/simplelinechart'
-import SimpleRadialBarChart from './graphique/simpleradialbarchart'
+import SimpleRadarChart from './graphique/simpleradarchart.js'
+import SimpleBarChart from './graphique/simplebarchart.js'
+import SimpleLineChart from './graphique/simplelinechart.js'
+import SimpleRadialBarChart from './graphique/simpleradialbarchart.js'
 import Nutrition from './nutrition.js'
 import './styles/graphique.css'
 import Services from './mocked/services.js'
-    let id = 18;
-    let data = new Services();
-    let userActivity = await data.getUserActivity(id);
-    let userPerformance = await data.getUserPerformances(id);
-    let userAverageSessions = await data.getUserAverageSessions(id);
-    let userMainData = await data.getUserMainData(id);
-    
+import { useParams } from "react-router-dom";
+import { useState } from 'react'
+let data,userActivity,userPerformance,userAverageSessions,userMainData;
+let status = {
+  userActivityStatus:undefined,
+  userPerformancesStatus:undefined,
+  userAverageSessionsStatus:undefined,
+  userMainDataStatus:undefined,
+  userActivityStatusText: undefined,
+  userAverageSessionsStatusText:undefined,
+  userPerformancesStatusText:undefined,
+  userMainDataStatusText:undefined
+};
+
 function Graphique() {
+  let [state,setState] = useState({status:0,userActivityStatus:0,userAverageSessionsStatus:0,userPerformancesStatus:0,userMainDataStatus:0});
+  
+  async function getData(){
+    //let test = useParams();
+    let id = 18;
+    data = new Services();
+    await data.getUserActivity(id).then((e)=>{
+      userActivity = e;
+      status.userActivityStatus = e.status;
+      status.userActivityStatusText = e.statusText;
+    });
+    await data.getUserPerformances(id).then((e)=>{
+      userPerformance = e;
+      status.userPerformancesStatus = e.status;
+      status.userPerformancesStatusText = e.statusText;
+    });
+    await data.getUserAverageSessions(id).then((e)=>{
+      userAverageSessions = e;
+      status.userAverageSessionsStatus = e.status;
+      status.userAverageSessionsStatusText = e.statusText;
+    });
+    await data.getUserMainData(id).then((e)=>{
+      userMainData = e;
+      status.userMainDataStatus = e.status;
+      status.userMainDataStatusText = e.statusText;
+    });
+  }
+
+  if(state.status === 0 && state.userActivityStatus === 0 && state.userPerformancesStatus === 0 && state.userAverageSessionsStatus === 0 && state.userMainDataStatus === 0){
+    getData().then((e)=>{
+      if(status.userActivityStatus === 200 && status.userPerformancesStatus === 200 && status.userAverageSessionsStatus === 200 && status.userMainDataStatus === 200){
+        setState({status:200});
+      }else{
+        if(status.userActivityStatus !== 200){
+          setState({status:status.userActivityStatus,statusText:status.userActivityStatusText});
+        }else if(status.userAverageSessionsStatus !== 200){
+          setState({status:status.userAverageSessionsStatus,statusText:status.userAverageSessionsStatusText});
+        }else if(status.userPerformancesStatus !== 200){
+          setState({status:status.userPerformancesStatus,statusText:status.userPerformancesStatusText});
+        }else if(status.userMainDataStatus !== 200){
+          setState({status:status.userMainDataStatus,statusText:status.userMainDataStatusText});
+        }
+      }
+    });
+  }
 
   return (
-    (userActivity.status === 200 && userPerformance.status === 200 && userAverageSessions.status === 200 && userMainData.status === 200) ?
+    (state.status === 200) ?
     <div id="main-container">
       <p className='text-welcome'>Bonjour <span>{userMainData.userInfos.firstName}</span></p>
       <p>Félicitation ! Vous avez explosé vos objectifs hier 👏</p>
@@ -48,11 +100,22 @@ function Graphique() {
         </div>
       </div>
     </div>
-    : 
+    :
+    state.status === 0 ?
     <div id="main-container">
-      <p className='text-welcome'>Bonjour désolé il y a une erreur <span>{userActivity.status === null ? userActivity.status+" "+userActivity.statusText : "problème serveur"} </span></p>
+      <p className='text-welcome'><span>Load...</span></p>
     </div>
-    
+    :
+    state.status === undefined ?
+    <div id="main-container">
+      <p className='text-welcome'>Bonjour désolé il y a <span>une erreur serveur</span></p>
+    </div>
+    :
+    state.status !== 0 && state.status !== 200 && state.status !== undefined ?
+    <div id="main-container">
+      <p className='text-welcome'>Bonjour désolé il y a une erreur <span>{state.status+" "+state.statusText} </span></p>
+    </div>
+    : null
   );
 }
 
