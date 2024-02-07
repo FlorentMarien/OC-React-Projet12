@@ -11,7 +11,7 @@ function App() {
       <Header></Header>
       <div id='page-container'>
         <NavigationApp></NavigationApp>
-        <Graphique />
+        <Router />
       </div>
     </>
   );

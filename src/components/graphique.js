@@ -20,11 +20,12 @@ let status = {
 };
 
 function Graphique() {
+
   let [state,setState] = useState({status:0,userActivityStatus:0,userAverageSessionsStatus:0,userPerformancesStatus:0,userMainDataStatus:0});
+  let params = useParams();
   
-  async function getData(){
-    //let test = useParams();
-    let id = 18;
+  async function getData(id){
+    
     data = new Services();
     await data.getUserActivity(id).then((e)=>{
       userActivity = e;
@@ -49,7 +50,7 @@ function Graphique() {
   }
 
   if(state.status === 0 && state.userActivityStatus === 0 && state.userPerformancesStatus === 0 && state.userAverageSessionsStatus === 0 && state.userMainDataStatus === 0){
-    getData().then((e)=>{
+    getData(params.id).then((e)=>{
       if(status.userActivityStatus === 200 && status.userPerformancesStatus === 200 && status.userAverageSessionsStatus === 200 && status.userMainDataStatus === 200){
         setState({status:200});
       }else{
