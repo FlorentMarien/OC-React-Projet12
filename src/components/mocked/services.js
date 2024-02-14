@@ -5,7 +5,7 @@ import {UserAverageSession} from '../models/average.js';
 import {UserPerformance} from '../models/performance.js';
 import {UserMainData} from '../models/maindata.js';
 import Api from './api.js'
-let mocked = false;
+let mocked = true;
 
 export default class Services{
 constructor(){
@@ -15,7 +15,8 @@ async getUserActivity(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_ACTIVITY.every((element)=>{
-            if(element.userId === id){ 
+            if(element.userId === Number(id)){ 
+                
                 data = element;
                 data.status = 200;
                 return false;
@@ -23,7 +24,6 @@ async getUserActivity(id){
                 return true;
             }
         });
-
         return new UserActivity(data);
     }else return new UserActivity(await this.clientApi.getUserApiActivity(id));
     
@@ -32,7 +32,7 @@ async getUserActivity(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_PERFORMANCE.every((element)=>{
-            if(element.userId === id){ 
+            if(element.userId === Number(id)){ 
                 data = element;
                 data.status = 200;
                 return false;
@@ -47,7 +47,7 @@ async getUserActivity(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_AVERAGE_SESSIONS.every((element)=>{
-            if(element.userId === id){ 
+            if(element.userId === Number(id)){ 
                 data = element;
                 data.status = 200;
                 return false;
@@ -62,7 +62,7 @@ async getUserMainData(id){
     if(mocked === true){
         let data = null;
         mockedData.USER_MAIN_DATA.every((element)=>{
-            if(element.id === id){ 
+            if(element.id === Number(id)){ 
                 data = element;
                 data.status = 200;
                 return false;
