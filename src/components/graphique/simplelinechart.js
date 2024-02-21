@@ -17,7 +17,7 @@ export default class Example extends PureComponent {
   constructor(Data){
     super(Data);
     localData = Data.Data;
-    let arrayday = ["L","M","M","J","V","S","D"]
+    let arrayday = ["L","M","M","J","V","S","D"];
     let i=0;
     localData.sessions.forEach(element => {
       if(arrayminmax[0] === null || element.sessionLength < arrayminmax[0]) arrayminmax[0] = element.sessionLength;
@@ -33,24 +33,14 @@ export default class Example extends PureComponent {
 
   render() {
     return (
-      
       <ResponsiveContainer width="100%" height="100%">
         <h3>Durée moyenne des sessions</h3>
         <LineChart
-          width={500}
-          height={300}
           data={localData.sessions}
-          
           onMouseMove={onMouseMove}
           onMouseOut={onMouseOut}
         >
-          
-          <XAxis margin={{
-            top: 5,
-            right: 30,
-            left: 20,
-            bottom: 5,
-          }} dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
+          <XAxis dataKey="dayl" stroke="rgba(255,255,255,0.6)" fill="gray" />
           <YAxis type="number" domain={arrayminmax} hide/>
           <Tooltip content={ <RenderToolTipLineBar/> }/>
           <defs>
@@ -60,7 +50,6 @@ export default class Example extends PureComponent {
             </linearGradient>
         </defs>
           <Line strokeWidth={3} type="bump" dataKey="sessionLength" stroke="url(#grad1)" activeDot={{ r: 5 }} />
-          
         </LineChart>
       </ResponsiveContainer>
     );

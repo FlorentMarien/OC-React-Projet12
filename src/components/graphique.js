@@ -32,29 +32,35 @@ function Graphique() {
       status.userActivityStatus = e.status;
       status.userActivityStatusText = e.statusText;
     });
+    console.log(userActivity);
     await data.getUserPerformances(id).then((e)=>{
       userPerformance = e;
       status.userPerformancesStatus = e.status;
       status.userPerformancesStatusText = e.statusText;
     });
+    console.log(userPerformance);
     await data.getUserAverageSessions(id).then((e)=>{
       userAverageSessions = e;
       status.userAverageSessionsStatus = e.status;
       status.userAverageSessionsStatusText = e.statusText;
     });
+    console.log(userAverageSessions);
     await data.getUserMainData(id).then((e)=>{
       userMainData = e;
       status.userMainDataStatus = e.status;
       status.userMainDataStatusText = e.statusText;
     });
+    console.log(userMainData);
   }
 
   if(state.status === 0 && state.userActivityStatus === 0 && state.userPerformancesStatus === 0 && state.userAverageSessionsStatus === 0 && state.userMainDataStatus === 0){
     getData(params.id).then((e)=>{
       if(status.userActivityStatus === 200 && status.userPerformancesStatus === 200 && status.userAverageSessionsStatus === 200 && status.userMainDataStatus === 200){
+        console.log("OKKK")
         setState({status:200});
       }else{
         if(status.userActivityStatus !== 200){
+          console.log("error id");
           setState({status:status.userActivityStatus,statusText:status.userActivityStatusText});
         }else if(status.userAverageSessionsStatus !== 200){
           setState({status:status.userAverageSessionsStatus,statusText:status.userAverageSessionsStatusText});

@@ -39,7 +39,8 @@ export default class Example extends PureComponent {
         >
           <CartesianGrid strokeDasharray="3 3" vertical={false}/>
           <XAxis dataKey="dayl" />
-          <YAxis width={30} tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
+          <YAxis  width={30} tickCount={rangeminmaxPoid(localData.sessions)} dataKey="kilogram" yAxisId="right" 
+                  domain={minmaxPoid(localData.sessions)} allowDataOverflow orientation='right'/>
           <YAxis dataKey="calories" yAxisId="left" orientation='left' hide/>
           <Tooltip content={<RenderTooltipBar />}/>
           <Legend content={<RenderLegend />} verticalAlign="top" iconType='circle' align='right'/>
@@ -50,3 +51,4 @@ export default class Example extends PureComponent {
     );
   }
 }
+
