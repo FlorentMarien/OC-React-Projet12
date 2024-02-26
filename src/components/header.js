@@ -6,14 +6,16 @@ function Header() {
     
       <header>
         <nav>
-          <div>
+          <div className='header-logo'>
             <img src={iconSportSee} />
             <img src={titleSportSee} />
           </div>
-          <a href="#">Accueil</a>
-          <a href="#">Profil</a>
-          <a href="#">Réglages</a>
-          <a href="#">Communauté</a>
+          <div>
+            <a href="#">Accueil</a>
+            <a href="#">Profil</a>
+            <a href="#">Réglages</a>
+            <a href="#">Communauté</a>
+          </div>
 
         </nav>
       </header>

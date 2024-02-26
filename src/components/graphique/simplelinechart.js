@@ -45,8 +45,8 @@ export default class Example extends PureComponent {
           <Tooltip content={ <RenderToolTipLineBar/> }/>
           <defs>
             <linearGradient id="grad1">
-                <stop offset="0%" stop-color="white" stop-opacity="0.5" />
-                <stop offset="100%" stop-color="white" stop-opacity="1" />
+                <stop offset="0%" style={{stopColor:"white", stopOpacity:0.5}}  />
+                <stop offset="100%" style={{stopColor:"white", stopOpacity:1}} />
             </linearGradient>
         </defs>
           <Line strokeWidth={3} type="bump" dataKey="sessionLength" stroke="url(#grad1)" activeDot={{ r: 5 }} />

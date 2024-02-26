@@ -33,13 +33,13 @@
 }
 .text-welcome{
     color: #000;
-font-family: Roboto;
-font-size: 48px;
-font-style: normal;
-font-weight: 500;
-line-height: 24px; /* 50% */
-margin: 0;
-margin-bottom: 41px;
+    font-family: Roboto;
+    font-size: 48px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: 24px; /* 50% */
+    margin: 0;
+    margin-bottom: 41px;
 }
 .text-welcome span{
     color: #FF0101;
@@ -90,8 +90,6 @@ margin-bottom: 41px;
     .block-graphique{
         margin-bottom: 20px;
     }
-    #main-container > div {
-    }
     .container-graph{
         display: flex;
         justify-content: space-between;
@@ -100,11 +98,27 @@ margin-bottom: 41px;
         justify-content: space-between;
     }
 }
+@media only screen and (max-width: 952px){
+    .text-welcome{
+        font-size: 35px;
+        line-height: 35px;
+    }
+    .text-welcome + p{
+        font-size: 20px;
+    }
+}
 @media only screen and (max-width: 652px){
     .container-graph{
         justify-content: center;
     }
     .block-nutrition{
         justify-content: center;
+    }
+    .text-welcome{
+        font-size: 30px;
+        line-height: 30px;
+    }
+    .text-welcome + p{
+        font-size: 16px;
     }
 }

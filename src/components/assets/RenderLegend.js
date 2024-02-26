@@ -33,15 +33,9 @@ export const RenderLegend = (props) => {
     return (
       payload[0] !== undefined ?
       <div className='tooltip-linebar'>
-        <ul>
-          <li>
-            <p>{payload[0].payload.kilogram}kg</p>
-          </li>
+          <p>{payload[0].payload.kilogram}kg</p>
           <span className='divider'></span>
-          <li>
           <p>{payload[0].payload.calories}Kcal</p>
-          </li>
-        </ul>
       </div>
       : null
     );

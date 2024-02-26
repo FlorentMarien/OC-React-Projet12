@@ -5,7 +5,7 @@ import {UserAverageSession} from '../models/average.js';
 import {UserPerformance} from '../models/performance.js';
 import {UserMainData} from '../models/maindata.js';
 import Api from './api.js'
-let mocked = false;
+let mocked = true;
 
 export default class Services{
 constructor(){
@@ -97,7 +97,7 @@ async getData(id,type){
     }else{
         if(data.status === null){
             data.status=404;
-            data.statusText="404 Not found";
+            data.statusText="Not found";
         }
         return data;
     }
